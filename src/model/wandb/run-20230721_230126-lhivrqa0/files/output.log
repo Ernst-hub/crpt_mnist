@@ -1,0 +1,1652 @@
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/utilities.py:70: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:615: UserWarning: Checkpoint directory /Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/models exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+  | Name       | Type             | Params
+------------------------------------------------
+0 | backbone   | Sequential       | 24.9 K
+1 | classifier | Sequential       | 804 K
+2 | criterion  | CrossEntropyLoss | 0
+------------------------------------------------
+829 K     Trainable params
+0         Non-trainable params
+829 K     Total params
+3.316     Total estimated model params size (MB)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:432: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 10 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+
+
+
+36.8 percent complete
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:359: UserWarning: `ModelCheckpoint(monitor='loss')` could not find the monitored key in the returned metrics: ['train_loss', 'train_loss_step', 'train_acc', 'train_acc_step', 'train_loss_epoch', 'train_acc_epoch', 'epoch', 'step']. HINT: Did you call `log('loss', value)` in the `LightningModule`?
+  warning_cache.warn(m)
+
+
+28.9 percent complete
+
+
+6.4 percent complete
+
+
+
+29.9 percent complete
+
+
+23.8 percent complete
+
+
+17.4 percent complete
+
+
+11.8 percent complete
+
+
+5.9 percent complete
+
+
+0.5 percent complete
+
+
+95.4 percent complete
+
+
+
+36.8 percent complete
+
+
+29.7 percent complete
+
+
+24.6 percent complete
+
+
+18.2 percent complete
+
+
+12.5 percent complete
+
+
+7.2 percent complete
+
+
+
+50.9 percent complete
+
+
+35.8 percent complete
+
+
+33.2 percent complete
+
+
+29.9 percent complete
+
+
+26.6 percent complete
+
+
+23.3 percent complete
+
+
+19.9 percent complete
+
+
+16.9 percent complete
+
+
+13.3 percent complete
+
+
+10.0 percent complete
+
+
+6.1 percent complete
+
+
+2.3 percent complete
+
+
+99.2 percent complete
+
+
+95.4 percent complete
+
+
+
+38.6 percent complete
+
+
+35.3 percent complete
+
+
+32.0 percent complete
+
+
+16.1 percent complete
+
+
+13.8 percent complete
+
+
+10.0 percent complete
+
+
+5.1 percent complete
+
+
+0.0 percent complete
+
+
+
+43.5 percent complete
+
+
+39.1 percent complete
+
+
+35.3 percent complete
+
+
+31.7 percent complete
+
+
+28.4 percent complete
+
+
+25.1 percent complete
+
+
+21.2 percent complete
+
+
+17.1 percent complete
+
+
+12.3 percent complete
+
+
+6.9 percent complete
+
+
+90.8 percent complete
+
+
+
+32.5 percent complete
+
+
+27.1 percent complete
+
+
+21.2 percent complete
+
+
+15.3 percent complete
+
+
+10.7 percent complete
+
+
+7.9 percent complete
+
+
+4.6 percent complete
+
+
+
+49.6 percent complete
+
+
+46.8 percent complete
+
+
+42.7 percent complete
+
+
+39.1 percent complete
+
+
+35.5 percent complete
+
+
+31.7 percent complete
+
+
+28.4 percent complete
+
+
+23.3 percent complete
+
+
+6.6 percent complete
+
+
+2.3 percent complete
+
+
+99.0 percent complete
+
+
+94.1 percent complete
+
+
+
+37.9 percent complete
+
+
+34.0 percent complete
+
+
+29.7 percent complete
+
+
+25.6 percent complete
+
+
+21.5 percent complete
+
+
+17.1 percent complete
+
+
+12.3 percent complete
+
+
+6.9 percent complete
+
+
+3.8 percent complete
+
+
+98.7 percent complete
+
+
+
+30.2 percent complete
+
+
+6.9 percent complete
+
+
+3.6 percent complete
+
+
+99.2 percent complete
+
+
+
+42.2 percent complete
+
+
+38.9 percent complete
+
+
+34.3 percent complete
+
+
+30.7 percent complete
+
+
+26.1 percent complete
+
+
+21.0 percent complete
+
+
+17.1 percent complete
+
+
+12.3 percent complete
+
+
+7.4 percent complete
+
+
+2.6 percent complete
+
+
+
+34.3 percent complete
+
+
+29.7 percent complete
+
+
+25.3 percent complete
+
+
+20.2 percent complete
+
+
+15.1 percent complete
+
+
+11.0 percent complete
+
+
+7.2 percent complete
+
+
+4.1 percent complete
+
+
+0.3 percent complete
+
+
+97.4 percent complete
+
+
+
+41.4 percent complete
+
+
+36.6 percent complete
+
+
+30.9 percent complete
+
+
+25.8 percent complete
+
+
+19.9 percent complete
+
+
+1.5 percent complete
+
+
+95.9 percent complete
+
+
+
+37.6 percent complete
+
+
+33.2 percent complete
+
+
+29.9 percent complete
+
+
+24.3 percent complete
+
+
+19.4 percent complete
+
+
+15.3 percent complete
+
+
+11.3 percent complete
+
+
+7.4 percent complete
+
+
+2.6 percent complete
+
+
+99.2 percent complete
+
+
+
+44.0 percent complete
+
+
+39.4 percent complete
+
+
+33.0 percent complete
+
+
+18.7 percent complete
+
+
+12.8 percent complete
+
+
+8.2 percent complete
+
+
+3.3 percent complete
+
+
+
+46.0 percent complete
+
+
+41.9 percent complete
+
+
+37.3 percent complete
+
+
+33.0 percent complete
+
+
+29.2 percent complete
+
+
+24.6 percent complete
+
+
+19.9 percent complete
+
+
+14.8 percent complete
+
+
+9.2 percent complete
+
+
+4.1 percent complete
+
+
+
+33.2 percent complete
+
+
+27.4 percent complete
+
+
+21.2 percent complete
+
+
+15.9 percent complete
+
+
+10.7 percent complete
+
+
+6.9 percent complete
+
+
+3.6 percent complete
+
+
+99.2 percent complete
+
+
+95.1 percent complete
+
+
+
+39.6 percent complete
+
+
+35.8 percent complete
+
+
+32.0 percent complete
+
+
+27.9 percent complete
+
+
+23.3 percent complete
+
+
+18.9 percent complete
+
+
+2.0 percent complete
+
+
+97.7 percent complete
+
+
+
+40.7 percent complete
+
+
+35.8 percent complete
+
+
+30.4 percent complete
+
+
+25.8 percent complete
+
+
+20.7 percent complete
+
+
+16.1 percent complete
+
+
+11.8 percent complete
+
+
+7.9 percent complete
+
+
+3.8 percent complete
+
+
+99.5 percent complete
+
+
+
+44.2 percent complete
+
+
+41.4 percent complete
+
+
+37.9 percent complete
+
+
+23.0 percent complete
+
+
+19.7 percent complete
+
+
+15.1 percent complete
+
+
+12.0 percent complete
+
+
+7.2 percent complete
+
+
+
+49.6 percent complete
+
+
+43.2 percent complete
+
+
+37.9 percent complete
+
+
+31.7 percent complete
+
+
+27.6 percent complete
+
+
+23.0 percent complete
+
+
+19.7 percent complete
+
+
+17.1 percent complete
+
+
+13.6 percent complete
+
+
+10.2 percent complete
+
+
+95.4 percent complete
+
+
+
+39.4 percent complete
+
+
+35.0 percent complete
+
+
+30.7 percent complete
+
+
+25.6 percent complete
+
+
+22.3 percent complete
+
+
+18.7 percent complete
+
+
+14.3 percent complete
+
+
+10.5 percent complete
+
+
+6.9 percent complete
+
+
+3.3 percent complete
+
+
+99.7 percent complete
+
+
+
+43.5 percent complete
+
+
+39.9 percent complete
+
+
+24.0 percent complete
+
+
+
+67.8 percent complete
+
+15.1 percent complete
+
+
+10.0 percent complete
+
+
+5.9 percent complete
+
+
+0.5 percent complete
+
+
+
+42.7 percent complete
+
+
+36.6 percent complete
+
+
+32.0 percent complete
+
+
+27.9 percent complete
+
+
+21.7 percent complete
+
+
+17.6 percent complete
+
+
+13.6 percent complete
+
+
+10.5 percent complete
+
+
+95.4 percent complete
+
+
+92.1 percent complete
+
+
+
+37.3 percent complete
+
+
+34.5 percent complete
+
+
+30.7 percent complete
+
+
+27.6 percent complete
+
+
+23.5 percent complete
+
+
+19.2 percent complete
+
+
+14.8 percent complete
+
+
+9.7 percent complete
+
+
+4.9 percent complete
+
+
+
+48.8 percent complete
+
+
+44.8 percent complete
+
+
+39.6 percent complete
+
+
+23.0 percent complete
+
+
+18.4 percent complete
+
+
+13.3 percent complete
+
+
+8.2 percent complete
+
+
+3.1 percent complete
+
+
+98.5 percent complete
+
+
+
+43.7 percent complete
+
+
+40.9 percent complete
+
+
+38.4 percent complete
+
+
+35.5 percent complete
+
+
+31.7 percent complete
+
+
+28.4 percent complete
+
+
+23.5 percent complete
+
+
+18.2 percent complete
+
+
+13.8 percent complete
+
+
+9.0 percent complete
+
+
+91.8 percent complete
+
+
+
+34.3 percent complete
+
+
+29.4 percent complete
+
+
+25.6 percent complete
+
+
+22.5 percent complete
+
+
+17.9 percent complete
+
+
+12.3 percent complete
+
+
+6.9 percent complete
+
+
+2.3 percent complete
+
+
+
+45.3 percent complete
+
+
+39.9 percent complete
+
+
+36.1 percent complete
+
+
+33.2 percent complete
+
+
+17.1 percent complete
+
+
+13.0 percent complete
+
+
+9.2 percent complete
+
+
+5.4 percent complete
+
+
+1.5 percent complete
+
+
+97.4 percent complete
+
+
+92.6 percent complete
+
+
+
+35.5 percent complete
+
+
+31.5 percent complete
+
+
+26.9 percent complete
+
+
+22.0 percent complete
+
+
+17.1 percent complete
+
+
+12.8 percent complete
+
+
+9.0 percent complete
+
+
+
+39.9 percent complete
+
+
+34.5 percent complete
+
+
+30.2 percent complete
+
+
+24.8 percent complete
+
+
+18.9 percent complete
+
+
+15.1 percent complete
+
+
+11.0 percent complete
+
+
+8.2 percent complete
+
+
+5.4 percent complete
+
+
+2.3 percent complete
+
+
+99.7 percent complete
+
+
+
+45.0 percent complete
+
+
+40.9 percent complete
+
+
+37.6 percent complete
+
+
+33.0 percent complete
+
+
+27.9 percent complete
+
+
+12.0 percent complete
+
+
+8.4 percent complete
+
+
+4.6 percent complete
+
+
+0.8 percent complete
+
+
+
+42.5 percent complete
+
+
+37.3 percent complete
+
+
+32.5 percent complete
+
+
+27.9 percent complete
+
+
+23.5 percent complete
+
+
+19.4 percent complete
+
+
+15.6 percent complete
+
+
+12.3 percent complete
+
+
+8.4 percent complete
+
+
+5.6 percent complete
+
+
+3.3 percent complete
+
+
+
+36.6 percent complete
+
+
+33.5 percent complete
+
+
+29.4 percent complete
+
+
+25.1 percent complete
+
+
+22.0 percent complete
+
+
+18.4 percent complete
+
+
+14.1 percent complete
+
+
+11.0 percent complete
+
+
+6.9 percent complete
+
+
+2.8 percent complete
+
+
+98.5 percent complete
+
+
+
+40.7 percent complete
+
+
+36.3 percent complete
+
+
+31.5 percent complete
+
+
+26.3 percent complete
+
+
+10.7 percent complete
+
+
+7.2 percent complete
+
+
+3.1 percent complete
+
+
+99.0 percent complete
+
+
+
+38.6 percent complete
+
+
+34.8 percent complete
+
+
+31.5 percent complete
+
+
+28.4 percent complete
+
+
+24.8 percent complete
+
+
+22.0 percent complete
+
+
+18.2 percent complete
+
+
+15.1 percent complete
+
+
+10.7 percent complete
+
+
+6.9 percent complete
+
+
+3.6 percent complete
+
+
+
+34.3 percent complete
+
+
+29.9 percent complete
+
+
+26.1 percent complete
+
+
+22.5 percent complete
+
+
+18.7 percent complete
+
+
+15.3 percent complete
+
+
+12.0 percent complete
+
+
+7.4 percent complete
+
+
+4.3 percent complete
+
+
+
+49.4 percent complete
+
+
+45.5 percent complete
+
+
+40.9 percent complete
+
+
+37.9 percent complete
+
+
+34.5 percent complete
+
+
+19.4 percent complete
+
+
+14.8 percent complete
+
+
+11.3 percent complete
+
+
+7.4 percent complete
+
+
+4.1 percent complete
+
+
+0.3 percent complete
+
+
+96.4 percent complete
+
+
+
+40.4 percent complete
+
+
+37.9 percent complete
+
+
+33.5 percent complete
+
+
+29.2 percent complete
+
+
+25.6 percent complete
+
+
+21.5 percent complete
+
+
+17.6 percent complete
+
+
+13.8 percent complete
+
+
+
+45.5 percent complete
+
+
+40.4 percent complete
+
+
+36.6 percent complete
+
+
+32.0 percent complete
+
+
+27.9 percent complete
+
+
+25.3 percent complete
+
+
+21.2 percent complete
+
+
+17.4 percent complete
+
+
+13.8 percent complete
+
+
+10.0 percent complete
+
+
+5.9 percent complete
+
+
+
+47.8 percent complete
+
+
+42.7 percent complete
+
+
+38.6 percent complete
+
+
+22.5 percent complete
+
+
+18.9 percent complete
+
+
+15.1 percent complete
+
+
+10.7 percent complete
+
+
+6.6 percent complete
+
+
+2.8 percent complete
+
+
+98.5 percent complete
+
+
+95.1 percent complete
+
+
+
+37.9 percent complete
+
+
+33.5 percent complete
+
+
+29.2 percent complete
+
+
+24.6 percent complete
+
+
+21.0 percent complete
+
+
+18.2 percent complete
+
+
+15.6 percent complete
+
+
+0.5 percent complete
+
+
+97.2 percent complete
+
+
+
+42.5 percent complete
+
+
+38.6 percent complete
+
+
+35.8 percent complete
+
+
+32.2 percent complete
+
+
+27.9 percent complete
+
+
+23.0 percent complete
+
+
+17.9 percent complete
+
+
+13.0 percent complete
+
+
+7.7 percent complete
+
+
+3.1 percent complete
+
+
+98.2 percent complete
+
+
+
+41.9 percent complete
+
+
+38.6 percent complete
+
+
+35.0 percent complete
+
+
+18.9 percent complete
+
+
+15.1 percent complete
+
+
+11.0 percent complete
+
+
+7.4 percent complete
+
+
+4.9 percent complete
+
+
+1.0 percent complete
+
+
+
+45.0 percent complete
+
+
+40.2 percent complete
+
+
+35.5 percent complete
+
+
+31.2 percent complete
+
+
+27.6 percent complete
+
+
+23.8 percent complete
+
+
+18.7 percent complete
+
+
+15.3 percent complete
+
+
+11.3 percent complete
+
+
+96.4 percent complete
+
+
+
+38.4 percent complete
+
+
+33.2 percent complete
+
+
+28.4 percent complete
+
+
+22.5 percent complete
+
+
+17.6 percent complete
+
+
+13.3 percent complete
+
+
+9.2 percent complete
+
+
+5.4 percent complete
+
+
+1.5 percent complete
+
+
+
+46.3 percent complete
+
+
+40.2 percent complete
+
+
+39.9 percent complete
+
+
+34.8 percent complete
+
+
+18.7 percent complete
+
+
+15.9 percent complete
+
+
+11.8 percent complete
+
+
+8.4 percent complete
+
+
+4.9 percent complete
+
+
+1.3 percent complete
+
+
+98.2 percent complete
+
+
+
+41.9 percent complete
+
+
+37.6 percent complete
+
+
+33.8 percent complete
+
+
+29.7 percent complete
+
+
+25.1 percent complete
+
+
+20.5 percent complete
+
+
+16.1 percent complete
+
+
+12.0 percent complete
+
+
+6.1 percent complete
+
+
+90.3 percent complete
+
+
+
+33.0 percent complete
+
+
+28.4 percent complete
+
+
+24.8 percent complete
+
+
+21.7 percent complete
+
+
+17.9 percent complete
+
+
+14.8 percent complete
+
+
+11.3 percent complete
+
+
+7.4 percent complete
+
+
+2.6 percent complete
+
+
+
+46.8 percent complete
+
+
+43.7 percent complete
+
+
+39.6 percent complete
+
+
+23.8 percent complete
+
+
+19.7 percent complete
+
+
+16.1 percent complete
+
+
+12.3 percent complete
+
+
+5.4 percent complete
+
+
+4.9 percent complete
+
+
+1.5 percent complete
+
+
+98.5 percent complete
+
+
+94.4 percent complete
+
+
+
+37.6 percent complete
+
+
+32.7 percent complete
+
+
+28.1 percent complete
+
+
+23.8 percent complete
+
+
+19.9 percent complete
+
+
+15.3 percent complete
+
+
+98.2 percent complete
+
+
+
+42.2 percent complete
+
+
+39.1 percent complete
+
+
+36.1 percent complete
+
+
+33.2 percent complete
+
+
+29.2 percent complete
+
+
+26.1 percent complete
+
+
+22.8 percent complete
+
+
+18.2 percent complete
+
+
+13.8 percent complete
+
+
+9.5 percent complete
+
+
+5.6 percent complete
+
+
+2.3 percent complete
+
+
+
+46.0 percent complete
+
+
+28.9 percent complete
+
+
+24.0 percent complete
+
+
+19.9 percent complete
+
+
+15.6 percent complete
+
+
+12.0 percent complete
+
+
+8.7 percent complete
+
+
+5.4 percent complete
+
+
+2.0 percent complete
+
+
+
+46.3 percent complete
+
+
+42.5 percent complete
+
+
+38.9 percent complete
+
+
+34.0 percent complete
+
+
+28.1 percent complete
+
+
+23.5 percent complete
+
+
+19.2 percent complete
+
+
+2.8 percent complete
+
+
+98.0 percent complete
+
+
+92.1 percent complete
+
+
+
+36.1 percent complete
+
+
+30.7 percent complete
+
+
+24.6 percent complete
+
+
+2.6 percent complete
+
+
+96.9 percent complete
+
+
+
+40.2 percent complete
+
+
+36.6 percent complete
+
+
+31.7 percent complete
+
+
+28.4 percent complete
+
+
+25.3 percent complete
+
+
+21.0 percent complete
+
+
+16.6 percent complete
+
+
+99.7 percent complete
+
+
+
+19.2 percent complete
+
+
+11.3 percent complete
+
+
+5.4 percent complete
+
+
+99.0 percent complete
+
+39.6 percent complete
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py:52: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+  rank_zero_warn("Detected KeyboardInterrupt, attempting graceful shutdown...")

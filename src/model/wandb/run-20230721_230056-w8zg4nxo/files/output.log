@@ -1,0 +1,64 @@
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/utilities.py:70: PossibleUserWarning: `max_epochs` was not set. Setting it to 1000 epochs. To train without an epoch limit, set `max_epochs=-1`.
+  rank_zero_warn(
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:615: UserWarning: Checkpoint directory /Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/models exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+  | Name       | Type             | Params
+------------------------------------------------
+0 | backbone   | Sequential       | 24.9 K
+1 | classifier | Sequential       | 804 K
+2 | criterion  | CrossEntropyLoss | 0
+------------------------------------------------
+829 K     Trainable params
+0         Non-trainable params
+829 K     Total params
+3.316     Total estimated model params size (MB)
+Traceback (most recent call last):
+  File "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/src/model/train.py", line 122, in <module>
+    main()
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/src/model/train.py", line 109, in main
+    trainer.fit(clf, mnist)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 529, in fit
+    call._call_and_handle_interrupt(
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 568, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 973, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1016, in _run_stage
+    self.fit_loop.run()
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py", line 193, in run
+    self.setup_data()
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py", line 221, in setup_data
+    train_dataloader = _request_dataloader(source)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py", line 330, in _request_dataloader
+    return data_source.dataloader()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py", line 300, in dataloader
+    return call._call_lightning_datamodule_hook(self.instance.trainer, self.name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 164, in _call_lightning_datamodule_hook
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/core/hooks.py", line 416, in train_dataloader
+    raise MisconfigurationException("`train_dataloader` must be implemented to be used with the Lightning Trainer")
+lightning_fabric.utilities.exceptions.MisconfigurationException: `train_dataloader` must be implemented to be used with the Lightning Trainer

@@ -1,0 +1,37 @@
+{
+    "os": "macOS-13.4.1-arm64-arm-64bit",
+    "python": "3.11.3",
+    "heartbeatAt": "2023-07-21T21:00:56.928064",
+    "startedAt": "2023-07-21T21:00:56.156935",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/data/raw",
+        "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/models"
+    ],
+    "state": "running",
+    "program": "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/src/model/train.py",
+    "codePath": "src/model/train.py",
+    "git": {
+        "remote": "https://github.com/Ernst-hub/crpt_mnist.git",
+        "commit": "af33db58b43311a2fa0523e2ac115fe037931417"
+    },
+    "email": "kristian.ernst@yahoo.com",
+    "root": "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist",
+    "host": "Kristians-MBP",
+    "username": "kristianernst",
+    "executable": "/Users/kristianernst/anaconda3/envs/new_env/bin/python",
+    "cpu_count": 10,
+    "cpu_count_logical": 10,
+    "disk": {
+        "total": 926.3517189025879,
+        "used": 174.09971237182617
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 32.0
+    }
+}
