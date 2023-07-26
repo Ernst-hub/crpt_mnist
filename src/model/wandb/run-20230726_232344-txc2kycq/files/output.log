@@ -1,0 +1,96 @@
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/lightning_fabric/connector.py:554: UserWarning: 16 is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/torch/cuda/amp/grad_scaler.py:120: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn("torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.")
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:615: UserWarning: Checkpoint directory /Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/models exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+  | Name       | Type             | Params
+------------------------------------------------
+0 | backbone   | Sequential       | 24.9 K
+1 | classifier | Sequential       | 804 K
+2 | criterion  | CrossEntropyLoss | 0
+------------------------------------------------
+829 K     Trainable params
+0         Non-trainable params
+829 K     Total params
+3.316     Total estimated model params size (MB)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:432: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 10 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/torch/amp/autocast_mode.py:204: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
+
+73.1 percent complete
+
+
+
+99.2 percent complete
+
+
+83.1 percent complete
+
+
+
+2.8 percent complete
+
+
+78.3 percent complete
+
+
+
+99.5 percent complete
+
+
+79.0 percent complete
+
+
+
+97.4 percent complete
+
+
+73.4 percent complete
+
+
+
+90.8 percent complete
+
+
+74.4 percent complete
+
+
+
+1.3 percent complete
+
+
+85.2 percent complete
+
+
+
+98.0 percent complete
+
+
+81.8 percent complete
+
+
+
+99.7 percent complete
+
+
+84.4 percent complete
+
+
+70.1 percent complete
+
+
+
+97.4 percent complete
+
+
+80.8 percent complete
+Epoch 19, global step 7820: 'train_acc_epoch' was not in top 1
+
+99.7 percent complete

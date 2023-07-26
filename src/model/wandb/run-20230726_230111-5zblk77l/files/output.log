@@ -1,0 +1,110 @@
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/lightning_fabric/connector.py:554: UserWarning: 16 is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/torch/cuda/amp/grad_scaler.py:120: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn("torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.")
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:615: UserWarning: Checkpoint directory /Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/models exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+  | Name       | Type             | Params
+------------------------------------------------
+0 | backbone   | Sequential       | 24.9 K
+1 | classifier | Sequential       | 804 K
+2 | criterion  | CrossEntropyLoss | 0
+------------------------------------------------
+829 K     Trainable params
+0         Non-trainable params
+829 K     Total params
+3.316     Total estimated model params size (MB)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/torch/amp/autocast_mode.py:204: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
+Traceback (most recent call last):
+  File "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/src/model/train.py", line 64, in <module>
+    main()
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/src/model/train.py", line 53, in main
+    trainer.fit(clf, mnist)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 529, in fit
+    call._call_and_handle_interrupt(
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 42, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 568, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 973, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1016, in _run_stage
+    self.fit_loop.run()
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py", line 201, in run
+    self.advance()
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py", line 354, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 133, in run
+    self.advance(data_fetcher)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 218, in advance
+    batch_output = self.automatic_optimization.run(trainer.optimizers[0], kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 185, in run
+    self._optimizer_step(kwargs.get("batch_idx", 0), closure)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 260, in _optimizer_step
+    call._call_lightning_module_hook(
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 144, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/core/module.py", line 1256, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/core/optimizer.py", line 155, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/strategies/strategy.py", line 225, in optimizer_step
+    return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/plugins/precision/amp.py", line 76, in optimizer_step
+    closure_result = closure()
+                     ^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 140, in __call__
+    self._result = self.closure(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 126, in closure
+    step_output = self._step_fn()
+                  ^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 307, in _training_step
+    training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 291, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/strategies/strategy.py", line 367, in training_step
+    return self.model.training_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/src/model/model.py", line 48, in training_step
+    self.logger.experiment.log({'logits': wandb.Histogram(preds)})
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/wandb/sdk/data_types/histogram.py", line 77, in __init__
+    self.histogram, self.bins = np.histogram(sequence, bins=num_bins)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/numpy/lib/histograms.py", line 778, in histogram
+    a, weights = _ravel_and_check_weights(a, weights)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/numpy/lib/histograms.py", line 285, in _ravel_and_check_weights
+    a = np.asarray(a)
+        ^^^^^^^^^^^^^
+  File "/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/torch/_tensor.py", line 970, in __array__
+    return self.numpy()
+           ^^^^^^^^^^^^
+TypeError: can't convert mps:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.

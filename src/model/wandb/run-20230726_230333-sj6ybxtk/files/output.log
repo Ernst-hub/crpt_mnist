@@ -1,0 +1,83 @@
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/lightning_fabric/connector.py:554: UserWarning: 16 is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/torch/cuda/amp/grad_scaler.py:120: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn("torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.")
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:615: UserWarning: Checkpoint directory /Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/models exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+  | Name       | Type             | Params
+------------------------------------------------
+0 | backbone   | Sequential       | 24.9 K
+1 | classifier | Sequential       | 804 K
+2 | criterion  | CrossEntropyLoss | 0
+------------------------------------------------
+829 K     Trainable params
+0         Non-trainable params
+829 K     Total params
+3.316     Total estimated model params size (MB)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/torch/amp/autocast_mode.py:204: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn('User provided device_type of \'cuda\', but CUDA is not available. Disabling')
+
+73.9 percent complete
+
+
+
+69.6 percent complete
+
+
+
+66.2 percent complete
+
+
+
+62.9 percent complete
+
+
+
+
+99.7 percent complete
+
+
+
+99.7 percent complete
+
+
+
+88.2 percent complete
+
+
+
+
+77.0 percent complete
+
+
+
+73.1 percent complete
+
+
+
+66.2 percent complete
+
+
+
+
+99.0 percent complete
+
+
+
+
+87.7 percent complete
+
+
+
+79.5 percent complete
+
+
+30.7 percent complete
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py:52: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+
+62.7 percent complete

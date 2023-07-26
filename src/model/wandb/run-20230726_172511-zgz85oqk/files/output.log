@@ -1,0 +1,309 @@
+GPU available: True (mps), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:615: UserWarning: Checkpoint directory /Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/models exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+  | Name       | Type             | Params
+------------------------------------------------
+0 | backbone   | Sequential       | 24.9 K
+1 | classifier | Sequential       | 804 K
+2 | criterion  | CrossEntropyLoss | 0
+------------------------------------------------
+829 K     Trainable params
+0         Non-trainable params
+829 K     Total params
+3.316     Total estimated model params size (MB)
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:432: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 10 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+
+
+10.2 percent complete
+/Users/kristianernst/anaconda3/envs/new_env/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:359: UserWarning: `ModelCheckpoint(monitor='loss')` could not find the monitored key in the returned metrics: ['train_loss', 'train_loss_step', 'train_acc', 'train_acc_step', 'train_loss_epoch', 'train_acc_epoch', 'epoch', 'step']. HINT: Did you call `log('loss', value)` in the `LightningModule`?
+  warning_cache.warn(m)
+
+
+5.1 percent complete
+
+
+10.2 percent complete
+
+63.2 percent complete
+
+
+71.6 percent complete
+
+
+79.5 percent complete
+
+
+80.8 percent complete
+
+
+84.9 percent complete
+
+
+90.3 percent complete
+
+
+96.2 percent complete
+
+
+5.9 percent complete
+
+
+13.0 percent complete
+
+68.8 percent complete
+
+
+79.8 percent complete
+
+
+77.7 percent complete
+
+
+91.8 percent complete
+
+
+4.3 percent complete
+
+62.7 percent complete
+
+
+72.6 percent complete
+
+
+83.6 percent complete
+
+
+85.9 percent complete
+
+
+90.0 percent complete
+
+
+3.8 percent complete
+
+
+16.6 percent complete
+
+74.2 percent complete
+
+
+86.7 percent complete
+
+
+0.0 percent complete
+
+
+13.0 percent complete
+
+70.3 percent complete
+
+
+68.3 percent complete
+
+
+79.3 percent complete
+
+
+93.1 percent complete
+
+
+3.8 percent complete
+
+62.1 percent complete
+
+
+73.9 percent complete
+
+
+86.7 percent complete
+
+
+97.2 percent complete
+
+
+10.2 percent complete
+
+66.0 percent complete
+
+
+79.3 percent complete
+
+
+89.8 percent complete
+
+
+1.8 percent complete
+
+
+14.6 percent complete
+
+
+22.3 percent complete
+
+81.3 percent complete
+
+
+77.7 percent complete
+
+
+88.5 percent complete
+
+
+91.3 percent complete
+
+
+0.8 percent complete
+
+
+12.0 percent complete
+
+68.5 percent complete
+
+
+77.7 percent complete
+
+
+90.0 percent complete
+
+
+2.0 percent complete
+
+
+13.6 percent complete
+
+69.3 percent complete
+
+
+82.1 percent complete
+
+
+91.6 percent complete
+
+
+1.5 percent complete
+
+
+8.2 percent complete
+
+
+3.6 percent complete
+
+60.6 percent complete
+
+
+71.9 percent complete
+
+
+80.8 percent complete
+
+
+86.7 percent complete
+
+
+90.0 percent complete
+
+
+94.6 percent complete
+
+
+96.9 percent complete
+
+
+99.7 percent complete
+
+
+7.9 percent complete
+
+
+9.7 percent complete
+
+
+17.6 percent complete
+
+
+17.4 percent complete
+
+
+16.9 percent complete
+
+
+8.7 percent complete
+
+62.4 percent complete
+
+
+73.4 percent complete
+
+
+73.7 percent complete
+
+
+76.0 percent complete
+
+
+78.8 percent complete
+
+
+84.1 percent complete
+
+
+94.1 percent complete
+
+
+0.5 percent complete
+
+
+99.2 percent complete
+
+58.1 percent complete
+
+
+
+21.0 percent complete
+
+
+21.7 percent complete
+
+74.9 percent complete
+
+
+79.3 percent complete
+
+
+86.4 percent complete
+
+
+92.6 percent complete
+
+
+86.7 percent complete
+
+
+97.7 percent complete
+
+
+5.6 percent complete
+
+60.6 percent complete
+
+
+66.8 percent complete
+
+
+75.4 percent complete
+
+
+82.1 percent complete
+
+
+72.4 percent complete
+
+
+79.8 percent complete
+Epoch 99, global step 39100: 'loss' was not in top 1
+
+99.7 percent complete
