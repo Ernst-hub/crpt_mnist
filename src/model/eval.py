@@ -11,9 +11,6 @@ import pytorch_lightning as pl
 from data.make_dataset import MNISTDataModule
 from model import Classifier
 
-# Append the path to the src directory (one level up)
-
-
 
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))

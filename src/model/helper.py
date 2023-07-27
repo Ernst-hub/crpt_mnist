@@ -1,4 +1,5 @@
 import sys
+from typing import Any
 
 import pytorch_lightning as pl
 
@@ -11,7 +12,14 @@ class LitProgressBar(pl.callbacks.ProgressBar):
     def disable(self):
         self.enable = False
 
-    def on_train_batch_end(self, trainer, pl_module, outputs, batch, batch_idx):
+    def on_train_batch_end(
+        self,
+        trainer: pl.Trainer,
+        pl_module: pl.LightningModule,
+        outputs: Any,
+        batch: Any,
+        batch_idx: int,
+    ):
         super().on_train_batch_end(
             trainer, pl_module, outputs, batch, batch_idx
         )  # don't forget this :)

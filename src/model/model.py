@@ -36,7 +36,9 @@ class Classifier(LightningModule):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.classifier(self.backbone(x))
 
-    def training_step(self, batch, batch_idx):
+    def training_step(
+        self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int
+    ) -> torch.Tensor:
         x, y = batch
         x = torch.unsqueeze(x, 1)
         preds = self(x)
@@ -56,13 +58,14 @@ class Classifier(LightningModule):
 
         return loss
 
-    # def validation_step(self, batch, batch_idx):
-    #     self._shared_eval(batch, batch_idx, 'val')
+    def test_step(
+        self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int
+    ) -> torch.Tensor:
+        return self._shared_eval(batch, batch_idx, "test")
 
-    def test_step(self, batch, batch_idx):
-        self._shared_eval(batch, batch_idx, "test")
-
-    def _shared_eval(self, batch, batch_idx, prefix):
+    def _shared_eval(
+        self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int, prefix: str
+    ) -> torch.Tensor:
         x, y = batch
         x = torch.unsqueeze(x, 1)
         preds = self.forward(x)
@@ -78,7 +81,7 @@ class Classifier(LightningModule):
 
         return acc
 
-    def predict_step(self, batch, batch_idx):
+    def predict_step(self, batch: Any, batch_idx: int) -> Any:
         x, y = batch
         x = torch.unsqueeze(x, 1)
         preds = self.forward(x)
