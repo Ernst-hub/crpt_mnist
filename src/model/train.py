@@ -10,11 +10,10 @@ from dotenv import find_dotenv, load_dotenv
 from model import Classifier
 
 sys.path.append("..")
+
 import wandb
 from helper import LitProgressBar
-
-from data.make_dataset import MNISTDataModule
-
+from src.data.datamodule import MNISTDataModule
 
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))

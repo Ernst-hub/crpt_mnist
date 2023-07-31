@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+filterwarnings = ["ignore::DeprecationWarning",
+                  "ignore:The dataloader, test_dataloader, does not have many workers.*",
+                  "ignore:The dataloader, train_dataloader, does not have many workers.*"]

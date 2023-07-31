@@ -1,4 +1,5 @@
 from typing import Any, Tuple
+import pytest
 
 import torch
 import wandb
@@ -40,7 +41,14 @@ class Classifier(LightningModule):
         self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int
     ) -> torch.Tensor:
         x, y = batch
+        if x.ndim != 3:
+            raise ValueError(f"Expected x to have 4 dimensions, got {x.ndim}")
+        
         x = torch.unsqueeze(x, 1)
+        
+        if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
+            raise ValueError(f"Expected x to have shape (N, 1, 28, 28), got {x.shape}")
+        
         preds = self(x)
         loss = self.criterion(preds, y)
         acc = (y == preds.argmax(dim=-1)).float().mean()
@@ -48,7 +56,7 @@ class Classifier(LightningModule):
             "train_loss", loss, on_step=True, on_epoch=True, prog_bar=True, logger=True
         )
         self.log(
-            "train_acc", acc, on_step=True, on_epoch=True, prog_bar=True, logger=True
+            "train_acc", acc, on_step=False, on_epoch=True, prog_bar=True, logger=True
         )
 
         # self.logger.experiment is the same as wandb.log
@@ -57,6 +65,9 @@ class Classifier(LightningModule):
         )
 
         return loss
+    
+    def on_train_epoch_end(self) -> Any:
+        self.log("train_acc_epoch", self.trainer.callback_metrics["train_acc"])
 
     def test_step(
         self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int
@@ -69,7 +80,18 @@ class Classifier(LightningModule):
         x, y = batch
         x = torch.unsqueeze(x, 1)
         preds = self.forward(x)
+        loss = self.criterion(preds, y)
         acc = (y == preds.argmax(dim=-1)).float().mean()
+        
+        self.log(
+            f"{prefix}_loss",
+            loss,
+            on_step=True,
+            on_epoch=True,
+            prog_bar=True,
+            logger=True,
+        )
+        
         self.log(
             f"{prefix}_acc",
             acc,
@@ -79,12 +101,13 @@ class Classifier(LightningModule):
             logger=True,
         )
 
-        return acc
+        return loss, acc
 
     def predict_step(self, batch: Any, batch_idx: int) -> Any:
         x, y = batch
         x = torch.unsqueeze(x, 1)
         preds = self.forward(x)
+        preds = preds.argmax(dim=-1)
         return preds, y
 
     def configure_optimizers(self):

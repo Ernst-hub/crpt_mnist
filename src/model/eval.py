@@ -7,9 +7,8 @@ from dotenv import find_dotenv, load_dotenv
 
 sys.path.append("..")
 import pytorch_lightning as pl
-
-from data.make_dataset import MNISTDataModule
 from model import Classifier
+from src.data.datamodule import MNISTDataModule
 
 
 @click.command()
@@ -27,7 +26,6 @@ def main(input_filepath: str, model_path: str) -> None:
     logger = logging.getLogger(__name__)
     logger.info("Running main")
 
-    # mnist = MNISTDataModule(data_dir=input_filepath)
     mnist = MNISTDataModule(data_dir=input_filepath, batch_size=64)
 
     logger.info("DataModule loaded")
