@@ -7,6 +7,7 @@ from dotenv import find_dotenv, load_dotenv
 
 sys.path.append("..")
 import pytorch_lightning as pl
+
 from model import Classifier
 from src.data.datamodule import MNISTDataModule
 

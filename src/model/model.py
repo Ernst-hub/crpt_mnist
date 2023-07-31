@@ -1,6 +1,6 @@
 from typing import Any, Tuple
-import pytest
 
+import pytest
 import torch
 import wandb
 from pytorch_lightning import LightningModule
@@ -43,12 +43,12 @@ class Classifier(LightningModule):
         x, y = batch
         if x.ndim != 3:
             raise ValueError(f"Expected x to have 4 dimensions, got {x.ndim}")
-        
+
         x = torch.unsqueeze(x, 1)
-        
+
         if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
             raise ValueError(f"Expected x to have shape (N, 1, 28, 28), got {x.shape}")
-        
+
         preds = self(x)
         loss = self.criterion(preds, y)
         acc = (y == preds.argmax(dim=-1)).float().mean()
@@ -65,7 +65,7 @@ class Classifier(LightningModule):
         )
 
         return loss
-    
+
     def on_train_epoch_end(self) -> Any:
         self.log("train_acc_epoch", self.trainer.callback_metrics["train_acc"])
 
@@ -82,7 +82,7 @@ class Classifier(LightningModule):
         preds = self.forward(x)
         loss = self.criterion(preds, y)
         acc = (y == preds.argmax(dim=-1)).float().mean()
-        
+
         self.log(
             f"{prefix}_loss",
             loss,
@@ -91,7 +91,7 @@ class Classifier(LightningModule):
             prog_bar=True,
             logger=True,
         )
-        
+
         self.log(
             f"{prefix}_acc",
             acc,

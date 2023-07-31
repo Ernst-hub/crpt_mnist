@@ -1,10 +1,10 @@
+from typing import Any
 
-import pytorch_lightning as pl
 import numpy as np
+import pytorch_lightning as pl
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 
-from typing import Any
 
 class MNISTDataModule(pl.LightningDataModule):
     def __init__(self, data_dir: str, batch_size: int):
@@ -54,7 +54,6 @@ class MNISTDataModule(pl.LightningDataModule):
         # create dataset
         self.train_dataset = TensorDataset(x_train, y_train)
         self.test_dataset = TensorDataset(x_test, y_test)
-        
 
     def train_dataloader(self):
         return DataLoader(
@@ -71,7 +70,7 @@ class MNISTDataModule(pl.LightningDataModule):
             shuffle=False,
             num_workers=self.num_workers,
         )
-    
+
     def predict_dataloader(self) -> Any:
         return DataLoader(
             self.test_dataset,

@@ -13,7 +13,9 @@ sys.path.append("..")
 
 import wandb
 from helper import LitProgressBar
+
 from src.data.datamodule import MNISTDataModule
+
 
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))
