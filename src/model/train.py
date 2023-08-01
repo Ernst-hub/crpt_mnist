@@ -51,7 +51,7 @@ def main(input_filepath: str, output_filepath: str) -> None:
         callbacks=[checkpoint_clb, bar_clb],
         logger=pl.loggers.WandbLogger(log_model=True, project="crpt_mnist"),
         max_epochs=20,
-        precision=16,  # speed up training by beign rough in memory
+        precision=16,  # speed up training by being rough in memory
         default_root_dir=os.getcwd(),
     )
     trainer.fit(clf, mnist)
