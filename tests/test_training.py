@@ -23,7 +23,7 @@ def test_training(num_epochs: int = 3) -> None:
     model = Classifier(wandb=False)
 
     # set callbacks
-    #device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     
     # set callbacks
     checkpoint_clb = pl.callbacks.ModelCheckpoint(
@@ -37,7 +37,7 @@ def test_training(num_epochs: int = 3) -> None:
     )
     
     trainer = pl.Trainer(
-        accelerator= "cpu",
+        accelerator= device,
         callbacks=[checkpoint_clb],
         max_epochs=num_epochs,
         precision=16,  # speed up training by beign rough in memory
