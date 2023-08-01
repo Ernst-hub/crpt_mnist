@@ -19,8 +19,10 @@ def test_training(num_epochs: int = 3) -> None:
     """assert that the model is correctly trained"""
 
     pl.seed_everything(42)
+    small_data = True
 
-    MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64)
+    MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64, small=small_data)
+
     model = Classifier(wandb=False)
 
     # set callbacks

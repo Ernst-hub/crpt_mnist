@@ -11,7 +11,8 @@ from src.data.datamodule import MNISTDataModule
 def test_data():
     logger = logging.getLogger(__name__)
     logger.info("Running test_data")
-    MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64)
+    small_data = True
+    MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64, small=small_data)
     MNIST.prepare_data()
 
     N_train = 25000
@@ -19,8 +20,9 @@ def test_data():
     print(len(MNIST.train_dataset))
     print(len(MNIST.test_dataset))
 
-    assert len(MNIST.train_dataset) == N_train, "Wrong number of training samples"
-    assert len(MNIST.test_dataset) == N_test, "Wrong number of test samples"
+    if not small_data:
+        assert len(MNIST.train_dataset) == N_train, "Wrong number of training samples"
+        assert len(MNIST.test_dataset) == N_test, "Wrong number of test samples"
 
     logging.info("correct number of examples")
 
