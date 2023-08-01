@@ -1,16 +1,14 @@
-from typing import Any, Tuple
+from typing import Any, Optional, Tuple, Union
 
-import pytest
 import torch
 from pytorch_lightning import LightningModule
-from pytorch_lightning.utilities.types import STEP_OUTPUT
 from torch import nn, optim
 
 import wandb
 
 
 class Classifier(LightningModule):
-    def __init__(self, wandb: bool = False):
+    def __init__(self, use_wandb: Optional[bool] = False) -> None:
         super().__init__()
 
         # x = 28 x 28 x 1 (H, W, C)
@@ -35,14 +33,14 @@ class Classifier(LightningModule):
 
         self.criterion = nn.CrossEntropyLoss()
 
-        self.wandb = wandb
+        self.use_wandb = use_wandb
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor) -> Any:
         return self.classifier(self.backbone(x))
 
     def training_step(
         self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int
-    ) -> torch.Tensor:
+    ) -> Any:
         x, y = batch
         if x.ndim != 3:
             raise ValueError(f"Expected x to have 4 dimensions, got {x.ndim}")
@@ -72,14 +70,15 @@ class Classifier(LightningModule):
         )
 
         # self.logger.experiment is the same as wandb.log
-        if self.wandb:
-            self.logger.experiment.log(
-                {"logits": wandb.Histogram(preds.detach().cpu().numpy())}
-            )
+        if self.use_wandb:
+            pass
+        #     self.logger.experiment.log( # type: ignore[attr]
+        #         {"logits": wandb.Histogram(preds.detach().cpu().numpy())}
+        #     )
 
         return loss
 
-    def on_train_epoch_end(self) -> Any:
+    def on_train_epoch_end(self) -> None:
         self.log("train_acc_epoch", self.trainer.callback_metrics["train_acc"])
 
     def test_step(
@@ -89,7 +88,7 @@ class Classifier(LightningModule):
 
     def _shared_eval(
         self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int, prefix: str
-    ) -> torch.Tensor:
+    ) -> Any:
         x, y = batch
         x = torch.unsqueeze(x, 1)
         y = y.long()
@@ -117,7 +116,9 @@ class Classifier(LightningModule):
 
         return loss, acc
 
-    def predict_step(self, batch: Any, batch_idx: int) -> Any:
+    def predict_step(
+        self, batch: Any, batch_idx: int, dataloader_idx: int | None = None
+    ) -> Any:
         x, y = batch
         x = torch.unsqueeze(x, 1)
         preds = self.forward(x)

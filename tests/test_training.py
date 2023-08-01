@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+from typing import Any, Generator, List, Optional, Union
 
 import torch
 
@@ -23,7 +24,7 @@ def test_training(num_epochs: int = 3) -> None:
 
     MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64, small=small_data)
 
-    model = Classifier(wandb=False)
+    model = Classifier(use_wandb=False)
 
     # set callbacks
     device = (
@@ -54,7 +55,7 @@ def test_training(num_epochs: int = 3) -> None:
     )
 
     # Log initial loss with random weights
-    random_loss = trainer.test(model, MNIST)
+    random_loss: Any = trainer.test(model, MNIST)
     random_loss = random_loss[0]["test_loss_epoch"]
 
     trainer.fit(model, MNIST)
@@ -62,7 +63,7 @@ def test_training(num_epochs: int = 3) -> None:
         trainer.logged_metrics.get("train_loss_epoch") is not None
     ), "No training loss logged"
 
-    qualified_loss = trainer.test(model, MNIST)
+    qualified_loss: Any = trainer.test(model, MNIST)
     qualified_loss = qualified_loss[0]["test_loss_epoch"]
     assert trainer.current_epoch == num_epochs, "Training did not finish"
 
@@ -73,8 +74,8 @@ def test_training(num_epochs: int = 3) -> None:
         trainer.logged_metrics.get("test_acc_epoch") is not None
     ), "No test accuracy logged"
     assert qualified_loss < random_loss, "Model did not improve during training."
-
-    if (random_loss - qualified_loss) / qualified_loss < 0.2:
+    ratio: float = (random_loss - qualified_loss) / qualified_loss
+    if ratio < 0.2:
         logging.warning("model loss improved little after training.")
 
 

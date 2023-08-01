@@ -31,7 +31,7 @@ def main(input_filepath: str, output_filepath: str) -> None:
     pl.seed_everything(42)
 
     mnist = MNISTDataModule(data_dir=input_filepath, batch_size=64)
-    clf = Classifier(wandb=True)
+    clf = Classifier(use_wandb=True)
 
     # set callbacks
     checkpoint_clb = pl.callbacks.ModelCheckpoint(
@@ -49,7 +49,7 @@ def main(input_filepath: str, output_filepath: str) -> None:
     # train
     trainer = pl.Trainer(
         callbacks=[checkpoint_clb, bar_clb],
-        logger=pl.loggers.WandbLogger(log_model=True, project="crpt_mnist"),
+        # logger=pl.loggers.WandbLogger(log_model=True, project="crpt_mnist"),
         max_epochs=20,
         precision=16,  # speed up training by being rough in memory
         default_root_dir=os.getcwd(),

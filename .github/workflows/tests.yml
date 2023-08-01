@@ -33,3 +33,12 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -v tests/
+    - name: Run isort
+      run: |
+        isort --profile black .
+    - name: Run black
+      run: |
+        black .
+    - name: Run mypy
+      run: |
+        mypy .
