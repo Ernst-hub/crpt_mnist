@@ -8,19 +8,15 @@ sys.path.append(_PROJECT_ROOT)
 
 
 import pytorch_lightning as pl
-import torch
 
 from src.data.datamodule import MNISTDataModule
 from src.model.model import Classifier
 
 
-def test_training(verbose: bool = False, num_epochs: int = 1) -> None:
+def test_training(num_epochs: int = 1) -> None:
     """assert that the model is correctly trained"""
 
     pl.seed_everything(42)
-
-    if verbose:
-        logging.info("Running test_training")
 
     MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64)
     model = Classifier()
@@ -33,8 +29,6 @@ def test_training(verbose: bool = False, num_epochs: int = 1) -> None:
         logger=pl.loggers.WandbLogger(log_model=True, project="crpt_mnist"),
         default_root_dir=os.getcwd(),
     )
-
-    # trainer.loggers[0].watch(model)
 
     # Log initial loss with random weights
     random_loss = trainer.test(model, MNIST)

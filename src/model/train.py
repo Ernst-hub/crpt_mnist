@@ -11,9 +11,9 @@ from model import Classifier
 
 sys.path.append("..")
 
-import wandb
 from helper import LitProgressBar
 
+import wandb
 from src.data.datamodule import MNISTDataModule
 
 

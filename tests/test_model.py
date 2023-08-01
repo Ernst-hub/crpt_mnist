@@ -12,7 +12,7 @@ from src.data.datamodule import MNISTDataModule
 from src.model.model import Classifier
 
 
-def test_model(verbose=False):
+def test_model():
     """assert that the model is outputting correct shapes"""
 
     MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64)
@@ -24,13 +24,6 @@ def test_model(verbose=False):
 
     trainer = pl.Trainer()
     ps = trainer.predict(model=model, datamodule=MNIST)
-
-    if verbose:
-        print(len(ps))
-        print(type(ps[0]))
-        print(ps[0])
-        print(type(ps[0][0]))
-        print(ps[0][0])
 
     assert (
         ps[0][0].shape == ps[0][1].shape

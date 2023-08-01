@@ -2,10 +2,11 @@ from typing import Any, Tuple
 
 import pytest
 import torch
-import wandb
 from pytorch_lightning import LightningModule
 from pytorch_lightning.utilities.types import STEP_OUTPUT
 from torch import nn, optim
+
+import wandb
 
 
 class Classifier(LightningModule):

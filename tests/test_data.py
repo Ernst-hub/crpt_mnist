@@ -24,7 +24,6 @@ def test_data():
 
     logging.info("correct number of examples")
 
-    # print a data point:
     x, y = MNIST.train_dataset[0]
 
     assert x.shape == (28, 28), "Wrong shape of X"
