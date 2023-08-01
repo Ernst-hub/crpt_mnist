@@ -14,16 +14,16 @@ from src.data.datamodule import MNISTDataModule
 from src.model.model import Classifier
 
 
-def test_training(num_epochs: int = 1) -> None:
+def test_training(num_epochs: int = 3) -> None:
     """assert that the model is correctly trained"""
 
     pl.seed_everything(42)
 
     MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64)
-    model = Classifier()
+    model = Classifier(wandb=False)
 
     # set callbacks
-    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+    #device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     
     # set callbacks
     checkpoint_clb = pl.callbacks.ModelCheckpoint(
@@ -37,7 +37,7 @@ def test_training(num_epochs: int = 1) -> None:
     )
     
     trainer = pl.Trainer(
-        accelerator= device,
+        accelerator= "cpu",
         callbacks=[checkpoint_clb],
         max_epochs=num_epochs,
         precision=16,  # speed up training by beign rough in memory

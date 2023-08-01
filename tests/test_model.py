@@ -20,10 +20,10 @@ def test_model():
     )
 
     MNIST.prepare_data()
-    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+    #device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     
     trainer = pl.Trainer(
-        accelerator= device,
+        accelerator= "cpu",
     )
     
     ps = trainer.predict(model=model, datamodule=MNIST)
