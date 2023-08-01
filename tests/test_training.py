@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+import torch
 
 from tests import _PATH_DATA, _PROJECT_ROOT, _TEST_ROOT
 
@@ -22,11 +23,12 @@ def test_training(num_epochs: int = 1) -> None:
     model = Classifier()
 
     # set callbacks
-
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+    
     trainer = pl.Trainer(
+        accelerator= device,
         max_epochs=num_epochs,
         precision=16,  # speed up training by beign rough in memory
-        logger=pl.loggers.WandbLogger(log_model=True, project="crpt_mnist"),
         default_root_dir=os.getcwd(),
     )
 

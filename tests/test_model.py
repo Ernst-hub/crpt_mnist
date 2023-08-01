@@ -1,6 +1,5 @@
 import sys
 
-import pytest
 import pytorch_lightning as pl
 import torch
 
@@ -21,8 +20,12 @@ def test_model():
     )
 
     MNIST.prepare_data()
-
-    trainer = pl.Trainer()
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+    
+    trainer = pl.Trainer(
+        accelerator= device,
+    )
+    
     ps = trainer.predict(model=model, datamodule=MNIST)
 
     assert (
