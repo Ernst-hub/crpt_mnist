@@ -16,7 +16,7 @@ def test_model():
 
     MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64)
     model = Classifier.load_from_checkpoint(
-        checkpoint_path=_MODEL_PATH + "/best-checkpoint.ckpt"
+        checkpoint_path=_MODEL_PATH + "/test-checkpoint.ckpt"
     )
 
     MNIST.prepare_data()

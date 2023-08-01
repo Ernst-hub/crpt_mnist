@@ -3,7 +3,7 @@ import os
 import sys
 import torch
 
-from tests import _PATH_DATA, _PROJECT_ROOT, _TEST_ROOT
+from tests import _PATH_DATA, _PROJECT_ROOT, _TEST_ROOT, _MODEL_PATH
 
 sys.path.append(_PROJECT_ROOT)
 
@@ -25,8 +25,20 @@ def test_training(num_epochs: int = 1) -> None:
     # set callbacks
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     
+    # set callbacks
+    checkpoint_clb = pl.callbacks.ModelCheckpoint(
+        dirpath=_MODEL_PATH,
+        filename="test-checkpoint",
+        save_top_k=1,
+        auto_insert_metric_name=True,
+        verbose=True,
+        monitor="train_acc_epoch",
+        mode="max",
+    )
+    
     trainer = pl.Trainer(
         accelerator= device,
+        callbacks=[checkpoint_clb],
         max_epochs=num_epochs,
         precision=16,  # speed up training by beign rough in memory
         default_root_dir=os.getcwd(),
