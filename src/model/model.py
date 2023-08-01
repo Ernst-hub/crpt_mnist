@@ -34,7 +34,7 @@ class Classifier(LightningModule):
         )
 
         self.criterion = nn.CrossEntropyLoss()
-        
+
         self.wandb = wandb
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -52,12 +52,16 @@ class Classifier(LightningModule):
         if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
             raise ValueError(f"Expected x to have shape (N, 1, 28, 28), got {x.shape}")
 
-        preds = self(x) # expects shape (N, 10)
-        assert preds.shape[1] == 10, f"Expected preds to have shape (N, 10), got {preds.shape}"
-        
-        y = y.long() # expects shape (N)
-        assert y.shape[0] == preds.shape[0], f"Expected y to have shape {preds.shape[0]}, got {y.shape[0]}"
-        
+        preds = self(x)  # expects shape (N, 10)
+        assert (
+            preds.shape[1] == 10
+        ), f"Expected preds to have shape (N, 10), got {preds.shape}"
+
+        y = y.long()  # expects shape (N)
+        assert (
+            y.shape[0] == preds.shape[0]
+        ), f"Expected y to have shape {preds.shape[0]}, got {y.shape[0]}"
+
         loss = self.criterion(preds, y)
         acc = (y == preds.argmax(dim=-1)).float().mean()
         self.log(
@@ -113,12 +117,12 @@ class Classifier(LightningModule):
 
         return loss, acc
 
-    # def predict_step(self, batch: Any, batch_idx: int) -> Any:
-    #     x, y = batch
-    #     x = torch.unsqueeze(x, 1)
-    #     preds = self.forward(x)
-    #     #preds = preds.argmax(dim=-1)
-    #     return preds, y
+    def predict_step(self, batch: Any, batch_idx: int) -> Any:
+        x, y = batch
+        x = torch.unsqueeze(x, 1)
+        preds = self.forward(x)
+        preds = preds.argmax(dim=-1)
+        return preds, y
 
     def configure_optimizers(self):
         return optim.Adam(self.parameters(), lr=1e-3)

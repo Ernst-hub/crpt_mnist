@@ -1,9 +1,10 @@
 import logging
 import os
 import sys
+
 import torch
 
-from tests import _PATH_DATA, _PROJECT_ROOT, _TEST_ROOT, _MODEL_PATH
+from tests import _MODEL_PATH, _PATH_DATA, _PROJECT_ROOT, _TEST_ROOT
 
 sys.path.append(_PROJECT_ROOT)
 
@@ -23,8 +24,14 @@ def test_training(num_epochs: int = 3) -> None:
     model = Classifier(wandb=False)
 
     # set callbacks
-    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
-    
+    device = (
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
+
     # set callbacks
     checkpoint_clb = pl.callbacks.ModelCheckpoint(
         dirpath=_MODEL_PATH,
@@ -35,9 +42,9 @@ def test_training(num_epochs: int = 3) -> None:
         monitor="train_acc_epoch",
         mode="max",
     )
-    
+
     trainer = pl.Trainer(
-        accelerator= device,
+        accelerator=device,
         callbacks=[checkpoint_clb],
         max_epochs=num_epochs,
         precision=16,  # speed up training by beign rough in memory

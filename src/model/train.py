@@ -7,16 +7,13 @@ import click
 import pytorch_lightning as pl
 from dotenv import find_dotenv, load_dotenv
 
-
-
 sys.path.append("..")
 
 
-
 import wandb
+from src.data.datamodule import MNISTDataModule
 from src.model.helper import LitProgressBar
 from src.model.model import Classifier
-from src.data.datamodule import MNISTDataModule
 
 
 @click.command()
