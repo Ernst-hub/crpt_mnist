@@ -35,10 +35,13 @@ jobs:
         pytest -v tests/
     - name: Run isort
       run: |
+        pip install isort
         isort --profile black .
     - name: Run black
       run: |
+        pip install black
         black .
     - name: Run mypy
       run: |
+        pip install mypy
         mypy .
