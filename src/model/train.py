@@ -7,13 +7,15 @@ import click
 import pytorch_lightning as pl
 from dotenv import find_dotenv, load_dotenv
 
-from model import Classifier
+
 
 sys.path.append("..")
 
-from helper import LitProgressBar
+
 
 import wandb
+from src.model.helper import LitProgressBar
+from src.model.model import Classifier
 from src.data.datamodule import MNISTDataModule
 
 
@@ -32,7 +34,7 @@ def main(input_filepath: str, output_filepath: str) -> None:
     pl.seed_everything(42)
 
     mnist = MNISTDataModule(data_dir=input_filepath, batch_size=64)
-    clf = Classifier()
+    clf = Classifier(wandb=True)
 
     # set callbacks
     checkpoint_clb = pl.callbacks.ModelCheckpoint(

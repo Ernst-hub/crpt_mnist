@@ -10,7 +10,7 @@ import wandb
 
 
 class Classifier(LightningModule):
-    def __init__(self):
+    def __init__(self, wandb: bool = False):
         super().__init__()
 
         # x = 28 x 28 x 1 (H, W, C)
@@ -34,6 +34,8 @@ class Classifier(LightningModule):
         )
 
         self.criterion = nn.CrossEntropyLoss()
+        
+        self.wandb = wandb
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.classifier(self.backbone(x))
@@ -61,9 +63,10 @@ class Classifier(LightningModule):
         )
 
         # self.logger.experiment is the same as wandb.log
-        self.logger.experiment.log(
-            {"logits": wandb.Histogram(preds.detach().cpu().numpy())}
-        )
+        if self.wandb:
+            self.logger.experiment.log(
+                {"logits": wandb.Histogram(preds.detach().cpu().numpy())}
+            )
 
         return loss
 
