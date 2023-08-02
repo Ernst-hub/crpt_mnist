@@ -1,13 +1,23 @@
-from typing import Any
+from typing import (
+    Any,
+)
 
 import numpy as np
 import pytorch_lightning as pl
 import torch
-from torch.utils.data import DataLoader, TensorDataset
+from torch.utils.data import (
+    DataLoader,
+    TensorDataset,
+)
 
 
 class MNISTDataModule(pl.LightningDataModule):
-    def __init__(self, data_dir: str, batch_size: int, small: bool = False):
+    def __init__(
+        self,
+        data_dir: str,
+        batch_size: int,
+        small: bool = False,
+    ):
         super().__init__()
         self.data_dir = data_dir
         self.batch_size = batch_size
@@ -15,7 +25,9 @@ class MNISTDataModule(pl.LightningDataModule):
         self.prepare_data_per_node = True
         self.small = small
 
-    def prepare_data(self):
+    def prepare_data(
+        self,
+    ):
         # Load the data
         tr0 = np.load(self.data_dir + "/train_0.npz")
         tr1 = np.load(self.data_dir + "/train_1.npz")
@@ -70,10 +82,18 @@ class MNISTDataModule(pl.LightningDataModule):
         ), "Failed to normalize the data, std is not apprx. 1"
 
         # create dataset
-        self.train_dataset = TensorDataset(x_train, y_train)
-        self.test_dataset = TensorDataset(x_test, y_test)
+        self.train_dataset = TensorDataset(
+            x_train,
+            y_train,
+        )
+        self.test_dataset = TensorDataset(
+            x_test,
+            y_test,
+        )
 
-    def train_dataloader(self):
+    def train_dataloader(
+        self,
+    ):
         return DataLoader(
             self.train_dataset,
             batch_size=self.batch_size,
@@ -81,7 +101,9 @@ class MNISTDataModule(pl.LightningDataModule):
             num_workers=self.num_workers,
         )
 
-    def test_dataloader(self):
+    def test_dataloader(
+        self,
+    ):
         return DataLoader(
             self.test_dataset,
             batch_size=self.batch_size,
@@ -89,7 +111,9 @@ class MNISTDataModule(pl.LightningDataModule):
             num_workers=self.num_workers,
         )
 
-    def predict_dataloader(self) -> Any:
+    def predict_dataloader(
+        self,
+    ) -> Any:
         return DataLoader(
             self.test_dataset,
             batch_size=self.batch_size,

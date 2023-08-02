@@ -2,3 +2,9 @@
 filterwarnings = ["ignore::DeprecationWarning",
                   "ignore:The dataloader, test_dataloader, does not have many workers.*",
                   "ignore:The dataloader, train_dataloader, does not have many workers.*"]
+[tool.black]
+line-length = 77
+[tool.flake8]
+ignore = ['E402',]
+max-line-length = 79
+max-complexity = 18

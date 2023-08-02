@@ -1,10 +1,8 @@
-from typing import Any, Optional, Tuple, Union
+from typing import Any, Optional, Tuple
 
 import torch
 from pytorch_lightning import LightningModule
 from torch import nn, optim
-
-import wandb
 
 
 class Classifier(LightningModule):
@@ -43,12 +41,16 @@ class Classifier(LightningModule):
     ) -> Any:
         x, y = batch
         if x.ndim != 3:
-            raise ValueError(f"Expected x to have 4 dimensions, got {x.ndim}")
+            raise ValueError(
+                f"Expected x to have 4 dimensions, got {x.ndim}"
+            )
 
         x = torch.unsqueeze(x, 1)
 
         if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
-            raise ValueError(f"Expected x to have shape (N, 1, 28, 28), got {x.shape}")
+            raise ValueError(
+                f"Expected x to have shape (N, 1, 28, 28), got {x.shape}"
+            )
 
         preds = self(x)  # expects shape (N, 10)
         assert (
@@ -63,10 +65,20 @@ class Classifier(LightningModule):
         loss = self.criterion(preds, y)
         acc = (y == preds.argmax(dim=-1)).float().mean()
         self.log(
-            "train_loss", loss, on_step=True, on_epoch=True, prog_bar=True, logger=True
+            "train_loss",
+            loss,
+            on_step=True,
+            on_epoch=True,
+            prog_bar=True,
+            logger=True,
         )
         self.log(
-            "train_acc", acc, on_step=False, on_epoch=True, prog_bar=True, logger=True
+            "train_acc",
+            acc,
+            on_step=False,
+            on_epoch=True,
+            prog_bar=True,
+            logger=True,
         )
 
         # self.logger.experiment is the same as wandb.log
@@ -79,7 +91,9 @@ class Classifier(LightningModule):
         return loss
 
     def on_train_epoch_end(self) -> None:
-        self.log("train_acc_epoch", self.trainer.callback_metrics["train_acc"])
+        self.log(
+            "train_acc_epoch", self.trainer.callback_metrics["train_acc"]
+        )
 
     def test_step(
         self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int
@@ -87,7 +101,10 @@ class Classifier(LightningModule):
         return self._shared_eval(batch, batch_idx, "test")
 
     def _shared_eval(
-        self, batch: Tuple[torch.Tensor, torch.Tensor], batch_idx: int, prefix: str
+        self,
+        batch: Tuple[torch.Tensor, torch.Tensor],
+        batch_idx: int,
+        prefix: str,
     ) -> Any:
         x, y = batch
         x = torch.unsqueeze(x, 1)

@@ -3,7 +3,7 @@ import sys
 import pytorch_lightning as pl
 import torch
 
-from tests import _MODEL_PATH, _PATH_DATA, _PROJECT_ROOT, _TEST_ROOT
+from tests import _MODEL_PATH, _PATH_DATA, _PROJECT_ROOT
 
 sys.path.append(_PROJECT_ROOT)
 
@@ -15,7 +15,9 @@ def test_model():
     """assert that the model is outputting correct shapes"""
 
     small_data = True
-    MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64, small=small_data)
+    MNIST = MNISTDataModule(
+        data_dir=_PATH_DATA, batch_size=64, small=small_data
+    )
     model = Classifier.load_from_checkpoint(
         checkpoint_path=_MODEL_PATH + "/test-checkpoint.ckpt"
     )

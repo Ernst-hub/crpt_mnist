@@ -1,11 +1,11 @@
 import logging
 import os
 import sys
-from typing import Any, Generator, List, Optional, Union
+from typing import Any
 
 import torch
 
-from tests import _MODEL_PATH, _PATH_DATA, _PROJECT_ROOT, _TEST_ROOT
+from tests import _MODEL_PATH, _PATH_DATA, _PROJECT_ROOT
 
 sys.path.append(_PROJECT_ROOT)
 
@@ -22,7 +22,9 @@ def test_training(num_epochs: int = 3) -> None:
     pl.seed_everything(42)
     small_data = True
 
-    MNIST = MNISTDataModule(data_dir=_PATH_DATA, batch_size=64, small=small_data)
+    MNIST = MNISTDataModule(
+        data_dir=_PATH_DATA, batch_size=64, small=small_data
+    )
 
     model = Classifier(use_wandb=False)
 
@@ -73,7 +75,9 @@ def test_training(num_epochs: int = 3) -> None:
     assert (
         trainer.logged_metrics.get("test_acc_epoch") is not None
     ), "No test accuracy logged"
-    assert qualified_loss < random_loss, "Model did not improve during training."
+    assert (
+        qualified_loss < random_loss
+    ), "Model did not improve during training."
     ratio: float = (random_loss - qualified_loss) / qualified_loss
     if ratio < 0.2:
         logging.warning("model loss improved little after training.")

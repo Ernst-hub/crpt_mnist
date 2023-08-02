@@ -1,22 +1,19 @@
-import click
+from typing import Any
+
 import numpy as np
 import pytorch_lightning as pl
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 
 
-@click.command()
-@click.argument("input_filepath", type=click.Path(exists=True))
-@click.argument("output_filepath", type=click.Path())
 class MNISTDataModule(pl.LightningDataModule):
-    def __init__(
-        self,
-        data_dir: str = "/Users/kristianernst/Work/Learning/MLOps/DTU/S4/exercise/crpt_mnist/data/raw",
-        batch_size: int = 64,
-    ):
+    def __init__(self, data_dir: str, batch_size: int, small: bool = False):
         super().__init__()
         self.data_dir = data_dir
         self.batch_size = batch_size
+        self.num_workers = 0
+        self.prepare_data_per_node = True
+        self.small = small
 
     def prepare_data(self):
         # Load the data
@@ -28,12 +25,29 @@ class MNISTDataModule(pl.LightningDataModule):
         test = np.load(self.data_dir + "/test.npz")
 
         # select and concatenate data
-        x_train = np.concatenate(
-            (tr0["images"], tr1["images"], tr2["images"], tr3["images"], tr4["images"])
-        )
-        y_train = np.concatenate(
-            (tr0["labels"], tr1["labels"], tr2["labels"], tr3["labels"], tr4["labels"])
-        )
+        if self.small:
+            x_train = tr0["images"]
+            y_train = tr0["labels"]
+        else:
+            x_train = np.concatenate(
+                (
+                    tr0["images"],
+                    tr1["images"],
+                    tr2["images"],
+                    tr3["images"],
+                    tr4["images"],
+                )
+            )
+            y_train = np.concatenate(
+                (
+                    tr0["labels"],
+                    tr1["labels"],
+                    tr2["labels"],
+                    tr3["labels"],
+                    tr4["labels"],
+                )
+            )
+
         x_test = test["images"]
         y_test = test["labels"]
 
@@ -60,7 +74,25 @@ class MNISTDataModule(pl.LightningDataModule):
         self.test_dataset = TensorDataset(x_test, y_test)
 
     def train_dataloader(self):
-        return DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True)
+        return DataLoader(
+            self.train_dataset,
+            batch_size=self.batch_size,
+            shuffle=True,
+            num_workers=self.num_workers,
+        )
 
     def test_dataloader(self):
-        return DataLoader(self.test_dataset, batch_size=self.batch_size, shuffle=True)
+        return DataLoader(
+            self.test_dataset,
+            batch_size=self.batch_size,
+            shuffle=False,
+            num_workers=self.num_workers,
+        )
+
+    def predict_dataloader(self) -> Any:
+        return DataLoader(
+            self.test_dataset,
+            batch_size=self.batch_size,
+            shuffle=False,
+            num_workers=self.num_workers,
+        )
