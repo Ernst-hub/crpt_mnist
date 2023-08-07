@@ -1,14 +1,9 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
 import numpy as np
 import pytorch_lightning as pl
 import torch
-from torch.utils.data import (
-    DataLoader,
-    TensorDataset,
-)
+from torch.utils.data import DataLoader, TensorDataset
 
 
 class MNISTDataModule(pl.LightningDataModule):

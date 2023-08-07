@@ -10,7 +10,7 @@ from dotenv import find_dotenv, load_dotenv
 sys.path.append("..")
 
 
-import wandb
+# import wandb
 from src.data.datamodule import MNISTDataModule
 from src.model.helper import LitProgressBar
 from src.model.model import Classifier
@@ -27,7 +27,7 @@ def main(input_filepath: str, output_filepath: str) -> None:
         log_path: path to the log file
         output_filepath: path to the trained model saving checkpoints
     """
-    wandb.login()
+    # wandb.login()
     pl.seed_everything(42)
 
     mnist = MNISTDataModule(data_dir=input_filepath, batch_size=64)

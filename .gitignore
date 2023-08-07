@@ -1,2 +1,5 @@
 wandb/
 lightning_logs/
+docker_model/
+coverage.xml
+crpt_mnist/
