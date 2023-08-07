@@ -25,7 +25,7 @@ jobs:
           env:
             GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
         - name: Train model
-          run: python -m src.model.train_cml --input_filepath data/processed --output_filepath models
+          run: python -m src.model.train_cml --INPUT_FILEPATH data/processed --OUTPUT_FILEPATH models
         - name: Write_report
           env:
             REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
