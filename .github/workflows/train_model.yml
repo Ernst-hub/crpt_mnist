@@ -1,0 +1,23 @@
+name: train_model
+on:
+    push:
+        branches: [master, main]
+jobs:
+    run:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-python@v2
+            - name: Train_model
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+                pip install -r requirements_tests.txt
+                python -m src.model.train_cml --input_dir data/processed --output_dir models
+            - name: Write_report
+              env:
+                REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                cat classification_report.txt >> report.md
+                cml-publish confusion_matrix.png --md >> report.md
+                cml-send-to-comment report.md

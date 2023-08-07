@@ -1,4 +1,4 @@
-from typing import Any, Optional, Tuple
+from typing import Any, Optional, Tuple, List
 
 import torch
 from pytorch_lightning import LightningModule
@@ -32,6 +32,9 @@ class Classifier(LightningModule):
         self.criterion = nn.CrossEntropyLoss()
 
         self.use_wandb = use_wandb
+
+        self.confmat_target: List[torch.Tensor] = []
+        self.confmat_pred: List[torch.Tensor] = []
 
     def forward(self, x: torch.Tensor) -> Any:
         return self.classifier(self.backbone(x))
@@ -140,6 +143,11 @@ class Classifier(LightningModule):
         x = torch.unsqueeze(x, 1)
         preds = self.forward(x)
         preds = preds.argmax(dim=-1)
+
+        # append values to confusion matrix, convert to np array
+        self.confmat_target.append(y)
+        self.confmat_pred.append(preds)
+
         return preds, y
 
     def configure_optimizers(self):
