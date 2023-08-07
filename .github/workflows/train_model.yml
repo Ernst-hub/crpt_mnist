@@ -22,6 +22,8 @@ jobs:
         - uses: iterative/setup-dvc@v1
         - name: Get data
           run: dvc pull
+          env:
+            GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
         - name: Train model
           run: python -m src.model.train_cml --input_filepath data/processed --output_filepath models
         - name: Write_report
