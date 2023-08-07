@@ -20,6 +20,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements_tests.txt
+    - name: Print GITHUB_TOKEN
+      run: |
+        echo "GITHUB_TOKEN: $GITHUB_TOKEN"
     - uses: iterative/setup-cml@v1
     - uses: iterative/setup-dvc@v1
     - name: Get data
