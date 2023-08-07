@@ -7,7 +7,6 @@ import click
 import pytorch_lightning as pl
 import torch
 from dotenv import find_dotenv, load_dotenv
-
 from matplotlib import pyplot as plt  # type ignore
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
@@ -68,14 +67,8 @@ def main(input_filepath: str, output_filepath: str) -> None:
 
     trainer.predict(clf, mnist)
 
-    targets = torch.cat(clf.confmat_target, dim=0)
-    preds = torch.cat(clf.confmat_pred, dim=0)
-
-    print(targets.shape)
-    print(preds.shape)
-
-    targets = targets.detach().cpu().numpy()
-    preds = preds.detach().cpu().numpy()
+    targets = torch.cat(clf.confmat_target, dim=0).detach().cpu().numpy()
+    preds = torch.cat(clf.confmat_pred, dim=0).detach().cpu().numpy()
 
     report = classification_report(
         y_true=targets, y_pred=preds, zero_division=1

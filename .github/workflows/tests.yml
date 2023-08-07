@@ -53,8 +53,8 @@ jobs:
         REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cat classification_report.txt >> report.md
-        cml publish confusion_matrix.png --md >> report.md
-        cml send-comment report.md
+        echo '![](./confusion_matrix.png "Confusion Matrix")' >> report.md
+        cml comment create report.md
     - name: Build the training docker image
       run: |
         echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login \
