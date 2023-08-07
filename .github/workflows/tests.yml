@@ -25,6 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements_tests.txt
+    - uses: iterative/setup-cml@v1
     - uses: iterative/setup-dvc@v1
     - name: Get data
       run: dvc pull
@@ -47,13 +48,14 @@ jobs:
         mypy .
     - name: Train model
       run: python -m src.model.train_cml data/raw models
-    - uses: iterative/setup-cml@v1
     - name: Write_report
       env:
         REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        touch report.md
+        echo "# CML report" >> report.md
         cat clf_report.txt >> report.md
-        echo '![](./confusion_matrix.png "Confusion Matrix")' >> report.md
+        echo '![](./confusion_matrix.png)' >> report.md
         cml comment create report.md
     - name: Build the training docker image
       run: |
