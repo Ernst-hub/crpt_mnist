@@ -52,7 +52,6 @@ jobs:
       env:
         REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        touch report.md
         echo "## CML report" >> report.md
         echo '![](./confusion_matrix.png)' >> report.md
         cat clf_report.txt >> report.md
