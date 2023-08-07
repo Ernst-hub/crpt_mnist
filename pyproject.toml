@@ -8,3 +8,5 @@ line-length = 77
 ignore = ['E402',]
 max-line-length = 79
 max-complexity = 18
+[tool.mypy]
+ignore_missing_imports = 1

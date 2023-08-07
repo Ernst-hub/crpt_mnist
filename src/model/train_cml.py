@@ -3,17 +3,17 @@ import os
 import sys
 from pathlib import Path
 
-from sklearn.metrics import (
-    classification_report,
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-)
-
-from matplotlib import pyplot as plt
 import click
 import pytorch_lightning as pl
-from dotenv import find_dotenv, load_dotenv
 import torch
+from dotenv import find_dotenv, load_dotenv
+
+from matplotlib import pyplot as plt  # type ignore
+from sklearn.metrics import (
+    ConfusionMatrixDisplay,
+    classification_report,
+    confusion_matrix,
+)
 
 sys.path.append("..")
 

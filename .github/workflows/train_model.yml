@@ -23,7 +23,7 @@ jobs:
         - name: Get data
           run: dvc pull
         - name: Train model
-          run: python -m src.model.train_cml --input_dir data/processed --output_dir models
+          run: python -m src.model.train_cml --input_filepath data/processed --output_filepath models
         - name: Write_report
           env:
             REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}

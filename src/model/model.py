@@ -1,4 +1,4 @@
-from typing import Any, Optional, Tuple, List
+from typing import Any, List, Optional, Tuple
 
 import torch
 from pytorch_lightning import LightningModule
