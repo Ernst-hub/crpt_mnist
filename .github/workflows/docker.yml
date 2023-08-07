@@ -9,17 +9,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
-            - name: build the train docker image
-              run: |
-                docker build . --file trainer.dockerfile --t trainer:latest
-                docker run --name exp1 trainer:latest
-                docker cp exp1:app/model docker_model
-
+            # - name: build the train docker image
+            #   run: |
+            #     docker build . --file trainer.dockerfile --t trainer:latest
+            #     docker run --name exp1 trainer:latest
+            #     docker cp exp1:app/model docker_model
             - name: Build the test Docker image
               run: |
                 echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login \
                     -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin docker.io
-                docker build . --file tester.dockerfile \
+                docker build . --file trainer.dockerfile \
                     --tag docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:$GITHUB_SHA
                 docker push docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:$GITHUB_SHA
                 docker run --name test1 docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:$GITHUB_SHA
