@@ -48,6 +48,15 @@ jobs:
         mypy .
     - name: Train model
       run: python -m src.model.train_cml data/raw models
+    - name: Write_report
+      env:
+        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        touch report.md
+        echo "## CML report" >> report.md
+        echo '![](./confusion_matrix.png)' >> report.md
+        cat clf_report.txt >> report.md
+        cml comment create report.md
     - name: Build the training docker image
       run: |
         echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login \
