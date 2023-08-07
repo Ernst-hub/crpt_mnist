@@ -45,3 +45,20 @@ jobs:
       run: |
         pip install mypy
         mypy .
+    - name: Train model
+      run: python -m src.model.train_cml data/raw models
+    - uses: iterative/setup-cml@v1
+    - name: Write_report
+      env:
+        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cat classification_report.txt >> report.md
+        cml publish confusion_matrix.png --md >> report.md
+        cml send-comment report.md
+    - name: Build the training docker image
+      run: |
+        echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login \
+            -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin docker.io
+        docker build . --file trainer.dockerfile \
+            --tag docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:$GITHUB_SHA
+        docker push docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:$GITHUB_SHA
