@@ -80,7 +80,7 @@ def main(input_filepath: str, output_filepath: str) -> None:
     report = classification_report(
         y_true=targets, y_pred=preds, zero_division=1
     )
-    with open("clf_report.txt", "w") as f:
+    with open("classification_report.txt", "w") as f:
         f.write(report)
 
     display_confusion_matrix = ConfusionMatrixDisplay(
