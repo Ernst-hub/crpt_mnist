@@ -1,4 +1,4 @@
-name: "Run tests"
+name: "CML run"
 
 on:
   push:
@@ -34,7 +34,6 @@ jobs:
         touch report.md
         echo "# CML report" >> report.md
         cat clf_report.txt >> report.md
-        echo '![](./confusion_matrix.png)' >> report.md
         cml comment create report.md
     - name: Build the training docker image
       run: |
